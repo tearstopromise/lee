@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+	<!--* Please see the included README.md file for license terms and conditions.-->
+
+	<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile: Theme Download</title>
+	<link rel="stylesheet" href="css/mobiletheme.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.3.min.css" />
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>
+	<style>
+	#lbl,#lbl1{
+	font-size:15px;
+	}
+	table {
+            text-align: center;
+            font-size: 9px;
+            font-family:Arial, Helvetica, sans-serif;
+            background: #c0c0c0;
+			width:100%;
+			
+        }
+ 
+        table thead tr,
+        table tfoot tr {
+            background: #feca5f;
+			color:black;
+			
+			border-top:1px solid #feca5f;
+			border-bottom:1px solid #feca5f;
+        }
+ 
+        table tbody tr {
+            background: #f0f0f0;
+		
+        }
+ 
+        td, th {
+            border: 1px solid white;
+			padding:16px 0% 17px 0%;
+			color:black;
+        }
+	</style>
+	<style>
+  .bubble {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    background: #00a99d;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	color:white;
+}
+
+  .bubble:after {
+    content: "";
+    position: absolute;
+    bottom: -0px;
+    left: 136px;
+    border-style: solid;
+    border-width: 0px 0px 0;
+    border-color: #00a99d transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+</style>
+	</head>
+
+	<body onLoad='load()'>
+			
+			
+<div data-role="page" data-theme="a" id="mainpage">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+				<h1>Library onClick</h1>
+				<a class="reload" class="ui-btn-right">Reload</a>
+		</div>
+		
+		<div data-role="content" data-theme="a" align="center">
+		<img src="css/images/logo.png" width="80%" />
+		<h3>Posts and Updates</h3>
+		<div id="allpost"></div>
+		</div>
+<div data-role="footer" data-position="fixed" data-tap-toggle="false">		
+	<div data-role="navbar">
+		<ul>
+			<li><a class="book" style="background-color:#00a99d;"><img src="css/images/gradesicon.png" width="60%"/></a></li>
+			<li><a class="transac"  style="background-color:#00a99d;"><img src="css/images/schedicon.png" width="80%"/></a></li>
+			<li><a class="logout" style="background-color:#00a99d;"><img src="css/images/feedback.png" width="60%"/></a></li>
+		</ul>
+	</div><!-- /navbar -->
+</div>
+</div>
+			
+			
+<div data-role="page" data-theme="a" id="bookpage">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+			<h1>Books</h1>
+				<a href="#mainpage" class="ui-btn-left"> Back </a>
+				<a class="reload" class="ui-btn-right">Reload</a>
+		</div>
+		
+		<div data-role="content" data-theme="a" align="center">
+		
+								<input type="text" class="form-control" name="users" onkeyup="showUser(this.value)" placeholder="Search Book" required="">
+						
+							
+							<div id="txtHint"><b>Books will be listed here.</b></div>
+							
+</div>
+<div data-role="footer" data-position="fixed" data-tap-toggle="false">		
+	<div data-role="navbar">
+		<ul>
+			<li><a class="book" style="background-color:#00a99d;"><img src="css/images/gradesicon.png" width="60%"/></a></li>
+			<li><a class="transac"  style="background-color:#00a99d;"><img src="css/images/schedicon.png" width="80%"/></a></li>
+			<li><a class="logout" style="background-color:#00a99d;"><img src="css/images/feedback.png" width="60%"/></a></li>
+		</ul>
+	</div><!-- /navbar -->
+</div>
+</div>
+
+
+			<!-- /upage -->
+			<!-- /upage -->
+		
+			<div data-role="page" data-theme="a" id="viewpage">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+		<h1>View Book</h1>
+						<a href="#mainpage" class="ui-btn-left"> Back </a>
+						<a class="reload" class="ui-btn-right">Reload</a>
+		</div>
+		
+		<div data-role="content" data-theme="a">
+		<form id="formborrow" action="javascript:postBorrow()">
+						
+							
+							<input type="text" id="booksid" name="booksid" class="form-control"  readonly>
+							<div id="responsecontainer">
+								
+</div>	
+						<input type="datetime-local" id="todate" name="todate" title="Enter this format: mm/dd/yyyy hh:mm AM/PM" value="" required readonly>
+					
+						<input type="submit" name="submit" value="Borrow" id="save">
+							
+				
+							</form>
+</div>
+<div data-role="footer" data-position="fixed" data-tap-toggle="false">		
+	<div data-role="navbar">
+		<ul>
+			<li><a class="book" style="background-color:#00a99d;"><img src="css/images/gradesicon.png" width="60%"/></a></li>
+			<li><a class="transac"  style="background-color:#00a99d;"><img src="css/images/schedicon.png" width="80%"/></a></li>
+			<li><a class="logout" style="background-color:#00a99d;"><img src="css/images/feedback.png" width="60%"/></a></li>
+		</ul>
+	</div><!-- /navbar -->
+</div>
+</div>
+
+<div data-role="page" data-theme="a" id="transaction">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+		<h1>My Transactions</h1>
+						<a href="#mainpage" class="ui-btn-left"> Back </a>
+						<a class="reload" class="ui-btn-right">Reload</a>
+		</div>
+		
+<div data-role="content" data-theme="a" align="center">
+		<div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="third">
+	<div data-role="collapsible">
+	<h2>List of Borrowed Books</h2>
+	<ul data-role="listview" data-filter-theme="a" data-divider-theme="d">
+	<li>	
+	 <div id="bbooks">unable to fetch data.</div>
+	</li>
+	</ul>
+	</div>
+	</div>
+	
+	<div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="third">
+	<div data-role="collapsible">
+	<h2>View History</h2>
+	<ul data-role="listview" data-filter-theme="a" data-divider-theme="d">
+	<li>	
+	 <div id="history">unable to fetch data.</div>
+	</li>
+	</ul>
+	</div>
+	</div>
+</div>
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false">		
+	<div data-role="navbar">
+		<ul>
+			<li><a class="book" style="background-color:#00a99d;"><img src="css/images/gradesicon.png" width="60%"/></a></li>
+			<li><a class="transac"  style="background-color:#00a99d;"><img src="css/images/schedicon.png" width="80%"/></a></li>
+			<li><a class="logout" style="background-color:#00a99d;"><img src="css/images/feedback.png" width="60%"/></a></li>
+		</ul>
+	</div><!-- /navbar -->
+</div>
+</div>
+		
+	
+		<!-- /uwrap -->
+
+
+		<script>
+		$(".reload").click(function(){
+		location.reload();
+		});
+		function load(){
+		
+var student=window.localStorage.getItem('student');
+ if (window.XMLHttpRequest) {
+			                // code for IE7+, Firefox, Chrome, Opera, Safari
+			                xmlhttp=new XMLHttpRequest();
+							xmlhttp1=new XMLHttpRequest();
+							xmlhttp2=new XMLHttpRequest();
+							xmlhttp3=new XMLHttpRequest();
+							
+			              } else { // code for IE6, IE5
+			                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+							xmlhttp1=new ActiveXObject("Microsoft.XMLHTTP");
+							xmlhttp2=new ActiveXObject("Microsoft.XMLHTTP");
+							xmlhttp3=new ActiveXObject("Microsoft.XMLHTTP");
+			              }
+			              xmlhttp.onreadystatechange=function() {
+			                if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			                  document.getElementById("bbooks").innerHTML=xmlhttp.responseText;
+
+			                }
+			              }
+			              xmlhttp.open("GET","http://gordoncollege-library.com/student/transac.php?student="+student,true);
+			              xmlhttp.send();
+						  
+						  
+						  xmlhttp1.onreadystatechange=function() {
+			                if (xmlhttp1.readyState==4 && xmlhttp1.status==200) {
+			                  document.getElementById("history").innerHTML=xmlhttp1.responseText;
+			                }
+			              }
+			              xmlhttp1.open("GET","http://gordoncollege-library.com/student/history.php?student="+student,true);
+			              xmlhttp1.send();
+				
+						   xmlhttp2.onreadystatechange=function() {
+			                if (xmlhttp2.readyState==4 && xmlhttp2.status==200) {
+			                  document.getElementById("todate").value=xmlhttp2.responseText;
+			                }
+			              }
+			              xmlhttp2.open("GET","http://gordoncollege-library.com/student/getdate.php",true);
+			              xmlhttp2.send();
+						  xmlhttp3.onreadystatechange=function() {
+			                if (xmlhttp3.readyState==4 && xmlhttp.status==200) {
+			                  document.getElementById("allpost").innerHTML=xmlhttp3.responseText;
+
+			                }
+			              }
+			              xmlhttp3.open("GET","http://gordoncollege-library.com/minclude/getpost.php",true);
+			              xmlhttp3.send();
+						
+}
+						   
+						  
+		
+			function showUser(str) {
+			              if (str=="") {
+			                document.getElementById("txtHint").innerHTML="";
+			                return;
+			              } 
+			              if (window.XMLHttpRequest) {
+			                // code for IE7+, Firefox, Chrome, Opera, Safari
+			                xmlhttp=new XMLHttpRequest();
+							
+			              } else { // code for IE6, IE5
+			                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			              }
+			              xmlhttp.onreadystatechange=function() {
+			                if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			                  document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+
+			                }
+			              }
+			              xmlhttp.open("GET","http://gordoncollege-library.com/minclude/searchlocator.php?q="+str,true);
+			              xmlhttp.send();
+			            }
+function reply_click(clicked_id)
+{
+    window.localStorage.setItem("bookid",clicked_id);
+    var show;
+    var getid=window.localStorage.getItem("bookid");
+    $.post("http://gordoncollege-library.com/minclude/view.php?id="+getid,
+    function(data,status){
+	  show=data;
+	 $("#responsecontainer").html(show);
+	 $('#booksid').val(getid)
+    });
+}
+
+//borrow
+var form= $("#formborrow");
+function postBorrow(){
+$.getJSON("http://gordoncollege-library.com/minclude/addBorrow.php?callback=?", form.serialize(),function(data)
+         				{
+						
+						if (data.verify == "no")
+			                     				{
+			                     				alert("You cannot borrow books with the same title.");
+												location.href="#bookpage";
+			                     				}
+			                     				else
+			                     				{
+			                     			alert("You successfully reserved the book for 3 hours.");
+							location.href="home.html";
+			                     				}
+						
+							
+							
+         				}).fail(function(data){
+						alert("Failed to Borrow");
+         });
+}
+$(".logout").click(function(){
+location.href="index.html";
+			window.localStorage.removeItem('student');
+});
+
+$(".book").click(function(){
+location.href="#bookpage";
+});
+
+$(".transac").click(function(){
+location.href="#transaction";
+});
+
+		</script>
+	</body>
+
+</html>

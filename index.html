@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile: Theme Download</title>
+	<link rel="stylesheet" href="css/mobiletheme.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.3.min.css" />
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>
+	</head>
+
+	<body>
+		
+	<div data-role="page" data-theme="a">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+				<h1>Welcome</h1>
+		</div>
+		<div data-role="content" data-theme="a" align="center">
+		<img src="css/images/logo.png" width="80%" />
+		<form id="hideme" action="javascript:verifyfirst()">
+									<input type="text" class="form-control" name="username" id="username" placeholder="Student ID"  style="color:black" required>
+									<input type="password" class="form-control" name="pass" id="pass" placeholder="Password"  style="color:black" required>
+									<button type="submit" name="submit" style="background-color:#00a99d;">LOG IN</button>
+									<button type="reset" name="reset" value="Reset" style="background-color:#00a99d;">RESET</button>
+		</form>
+</div>
+</div>
+		<script>
+			// login verification function
+			                     var lform = $("#hideme");
+			                     		function verifyfirst(){
+			                     		if($( "#username" ).val() == "" || $( "#pass" ).val() == "")
+			                     		{
+			                     		return;
+			                     		}
+			                     			
+			                     		
+			                     			$.getJSON("http://gordoncollege-library.com/minclude/verifyfirst.php?callback=?", lform.serialize(),function(data)
+			                     			{
+			                     				if (data.verified == "v1")
+			                     				{
+			                     				location.href="home.html";
+												var stud=$( "#username" ).val();
+												window.localStorage.setItem('student',stud);
+												$( "#username" ).val("")
+												$( "#pass" ).val("")
+			                     				}
+			                     				else
+			                     				{
+			                     				alert("Note: Wrong Username and Password")
+			                     				}
+			                     			}).fail(function(data){
+			                     				alert("OFFLINE DATABASE");
+			                     				
+			                     			});
+			                     		}
+		</script>
+	</body>
+</html>
