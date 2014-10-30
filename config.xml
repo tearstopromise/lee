@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.gclibraryonclick.com" version="2">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.gclibraryonclick.com" version="4">
 
 	<name>GCLibrary onClick</name>
 	<description>GCLibrary onClick is a mobile application for students in Gordon College. It allows the students to search,view and borrow the books that are currently available in the Gordon College Library. They can also see their past transactions in the library using this application.</description>
